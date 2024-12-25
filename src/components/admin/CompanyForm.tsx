@@ -61,7 +61,7 @@ export function CompanyForm({ onSubmit, initialData }: CompanyFormProps) {
   const [message,setMessage] = useState('');
   const handleSubmit = (values: FormData) => {
     if(!values.emails.includes('@')) {
-      setMessage('It should be email')
+      setMessage('Please enter valid email')
       return;
     }
     const submissionData = {
