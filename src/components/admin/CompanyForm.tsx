@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import type { Company } from "./CompanyManagement";
+import { useState } from "react";
 
 const companySchema = z.object({
   name: z.string().min(2, "Company name must be at least 2 characters"),
@@ -57,8 +58,12 @@ export function CompanyForm({ onSubmit, initialData }: CompanyFormProps) {
           communicationPeriodicity: 14,
         },
   });
-
+  const [message,setMessage] = useState('');
   const handleSubmit = (values: FormData) => {
+    if(!values.emails.includes('@')) {
+      setMessage('It should be email')
+      return;
+    }
     const submissionData = {
       name: values.name,
       location: values.location,
@@ -122,7 +127,7 @@ export function CompanyForm({ onSubmit, initialData }: CompanyFormProps) {
             </FormItem>
           )}
         />
-
+        <div className="text-red-500">{message}</div>
         <FormField
           control={form.control}
           name="emails"
@@ -147,7 +152,7 @@ export function CompanyForm({ onSubmit, initialData }: CompanyFormProps) {
             <FormItem>
               <FormLabel>Phone Numbers (comma-separated)</FormLabel>
               <FormControl>
-                <Input
+                <Input type="number"
                   placeholder="+1 (555) 123-4567, +1 (555) 987-6543"
                   {...field}
                 />
