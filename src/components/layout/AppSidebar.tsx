@@ -31,8 +31,10 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton onClick={() => navigate(item.path)}>
+                    <div className="flex space-x-2 hover:bg-slate-200 hover:rounded-md hover:w-full p-2">
                     <item.icon className="w-5 h-5" />
                     <span>{item.title}</span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

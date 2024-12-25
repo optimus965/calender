@@ -2,6 +2,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
+  console.log(children)
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
